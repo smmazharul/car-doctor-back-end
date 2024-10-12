@@ -10,7 +10,11 @@ const port = process.env.PORT || 5000;
 // middleware
 app.use(
   cors({
-    origin: ["https://car-doctor-140c8.web.app/", "https://car-doctor-140c8.firebaseapp.com/"],
+    origin: [
+      "https://car-doctor-140c8.web.app/",
+      "https://car-doctor-140c8.firebaseapp.com/",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
     credentials: true,
   })
 );
@@ -94,6 +98,10 @@ async function run() {
     // services related api
 
     app.get("/services", async (req, res) => {
+       res.setHeader(
+         "Access-Control-Allow-Origin",
+         "https://car-doctor-140c8.web.app"
+       );
       const cursor = serviceCollection.find();
       const result = await cursor.toArray();
       res.send(result);
