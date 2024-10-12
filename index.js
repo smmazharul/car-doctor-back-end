@@ -90,7 +90,7 @@ async function run() {
        .cookie("token", token, {
          httpOnly: true,
          secure: false,
-        //  sameSite:"none"
+         sameSite:"none"
        })
        .send({ success: true });
    });
@@ -98,10 +98,6 @@ async function run() {
     // services related api
 
     app.get("/services", async (req, res) => {
-       res.setHeader(
-         "Access-Control-Allow-Origin",
-         "https://car-doctor-140c8.web.app"
-       );
       const cursor = serviceCollection.find();
       const result = await cursor.toArray();
       res.send(result);
