@@ -11,8 +11,8 @@ const port = process.env.PORT || 5000;
 app.use(
   cors({
     origin: [
-      "https://car-doctor-140c8.web.app/",
-      "https://car-doctor-140c8.firebaseapp.com/",
+      "https://car-doctor-140c8.web.app",
+      "https://car-doctor-140c8.firebaseapp.com",
     ],
     // methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
     // credentials: true,
@@ -102,8 +102,8 @@ async function run() {
      res
        .cookie("token", token, {
          httpOnly: true,
-         secure: false,
-        //  sameSite:"none"
+         secure: true,
+         sameSite:"none"
        })
        .send({ success: true });
    });
