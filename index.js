@@ -14,7 +14,20 @@ app.use(
       "https://car-doctor-140c8.web.app/",
       "https://car-doctor-140c8.firebaseapp.com/",
     ],
+    // methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+    // credentials: true,
+
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Origin",
+      "X-Requested-With",
+      "Accept",
+      "x-client-key",
+      "x-client-token",
+      "x-client-secret",
+      "Authorization",
+    ],
     credentials: true,
   })
 );
@@ -90,7 +103,7 @@ async function run() {
        .cookie("token", token, {
          httpOnly: true,
          secure: false,
-         sameSite:"none"
+        //  sameSite:"none"
        })
        .send({ success: true });
    });
